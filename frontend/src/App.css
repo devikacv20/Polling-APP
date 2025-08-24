@@ -1,0 +1,99 @@
+.App {
+  text-align: center;
+  background: linear-gradient(135deg, #1d1f27, #282c34, #3c3f51);
+  background-size: 300% 300%;
+  animation: backgroundShift 15s ease infinite;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Logo with hover bounce & shadow glow */
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+  transition: transform 0.4s ease, filter 0.3s ease;
+  filter: drop-shadow(0px 0px 10px rgba(97, 218, 251, 0.6));
+}
+
+.App-logo:hover {
+  transform: scale(1.1) rotate(10deg);
+  filter: drop-shadow(0px 0px 20px rgba(97, 218, 251, 0.9));
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+/* Header with glass effect */
+.App-header {
+  background: rgba(40, 44, 52, 0.7);
+  border-radius: 20px;
+  padding: 30px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.4);
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(12px + 2vmin);
+  color: #ffffff;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+/* Stylish link */
+.App-link {
+  color: #61dafb;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.App-link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 0%;
+  background: #61dafb;
+  transition: width 0.3s ease;
+}
+
+.App-link:hover {
+  color: #ffffff;
+  background: rgba(97, 218, 251, 0.2);
+}
+
+.App-link:hover::after {
+  width: 100%;
+}
+
+/* Animations */
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes backgroundShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
