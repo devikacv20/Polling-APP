@@ -1,4 +1,5 @@
 
+
 import React, { useContext } from "react";
 import AuthContext from "../context/authContext";
 import { Link as RouterLink, NavLink } from "react-router-dom";
@@ -8,6 +9,10 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import { styled } from "@mui/material/styles";
+import IconButton from "@mui/material/IconButton";
+import Brightness4Icon from "@mui/icons-material/Brightness4";
+import Brightness7Icon from "@mui/icons-material/Brightness7";
+import { useColorMode } from "../theme";
 
 const StyledNavLink = styled(NavLink)(({ theme }) => ({
   color: theme.palette.primary.contrastText,
@@ -29,8 +34,10 @@ const StyledNavLink = styled(NavLink)(({ theme }) => ({
   },
 }));
 
+
 const NavBar = () => {
   const { user } = useContext(AuthContext);
+  const { mode, toggleColorMode } = useColorMode();
 
   return (
     <AppBar position="sticky" color="primary" elevation={4} sx={{ mb: 3, borderRadius: 2 }}>
@@ -43,7 +50,10 @@ const NavBar = () => {
         >
           Polling App
         </Typography>
-        <Box>
+        <Box sx={{ display: 'flex', alignItems: 'center' }}>
+          <IconButton sx={{ ml: 1, mr: 2 }} onClick={toggleColorMode} color="inherit">
+            {mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
+          </IconButton>
           <StyledNavLink to="/polls">Polls</StyledNavLink>
           {(!user || !user.user_id) && (
             <>
